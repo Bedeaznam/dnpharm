@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="bg">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DNPharm — Health Delivered</title>
+
+  <style>
+    :root{
+      --accent:#57c7d4;
+      --white:#ffffff;
+      --glass: rgba(255,255,255,.10);
+      --glass2: rgba(255,255,255,.08);
+      --border: rgba(255,255,255,.35);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.82);
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,Arial,sans-serif;}
+    html,body{height:100%;}
+
+    body{
+      color:var(--text);
+      overflow-x:hidden;
+      background:#0b1320; /* fallback ако няма снимка */
+    }
+
+    /* Фон: СНИМКАТА + blur, само фонът */
+    .bg{
+      position:fixed;
+      inset:0;
+      z-index:-2;
+      background: url("./background.png") center/cover no-repeat;
+      filter: blur(3px);
+      transform: scale(1.05);
+    }
+
+    /* Лек тъмен слой за четимост */
+    .shade{
+      position:fixed;
+      inset:0;
+      z-index:-1;
+      background: rgba(9, 20, 34, .35);
+    }
+
+    .wrap{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 64px 18px;
+    }
+
+    .container{
+      width:min(980px, 100%);
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap: 26px;
+    }
+
+    /* Header */
+    .brand{
+      text-align:center;
+      margin-bottom: 6px;
+    }
+
+    .logo{
+      width: 92px;
+      height:auto;
+      display:block;
+      margin: 0 auto 14px;
+      filter: drop-shadow(0 16px 40px rgba(0,0,0,.35));
+    }
+
+    .title{
+      font-size: clamp(44px, 6vw, 72px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      text-shadow: 0 20px 60px rgba(0,0,0,.45);
+      line-height:1.05;
+    }
+
+    .tagline{
+      margin-top: 10px;
+      font-size: 13px;
+      letter-spacing: .35em;
+      text-transform: uppercase;
+      color: rgba(87,199,212,.95);
+      font-weight: 700;
+    }
+
+    /* Cards */
+    .card{
+      width:min(860px, 100%);
+      background: var(--glass);
+      border: 2px solid var(--border);
+      border-radius: 26px;
+      padding: 26px 28px;
+      box-shadow: 0 30px 90px rgba(0,0,0,.35);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .card h2{
+      color: var(--accent);
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .card p{
+      color: var(--muted);
+      font-size: 16.5px;
+      line-height: 1.75;
+      margin-top: 12px;
+    }
+
+    /* Header вътре в картата (заглавие + бутони) */
+    .card-header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:14px;
+    }
+
+    .card-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    /* Glass buttons (chips) */
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 20px;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:800;
+      font-size:14px;
+      letter-spacing:.05em;
+
+      color:#ffffff !important;
+      background:rgba(255,255,255,.10);
+      border:2px solid rgba(87,199,212,.6);
+
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+
+      box-shadow: 0 14px 40px rgba(0,0,0,.25);
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+
+    .chip:visited{ color:#ffffff !important; }
+
+    .chip:hover{
+      background:rgba(87,199,212,.9);
+      color:#0b1320 !important;
+      transform:translateY(-2px);
+      border-color:rgba(87,199,212,1);
+    }
+
+    .chip-active{
+      background:rgba(87,199,212,.9);
+      color:#0b1320 !important;
+      border-color:rgba(87,199,212,1);
+    }
+
+    /* Responsive за малки екрани */
+    @media (max-width: 520px){
+      .card-header{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+      .card-actions{
+        width:100%;
+        justify-content:flex-start;
+      }
+    }
+
+    footer{
+      margin-top: 12px;
+      color: rgba(255,255,255,.70);
+      font-size: 13px;
+      text-align:center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg"></div>
+  <div class="shade"></div>
+
+  <div class="wrap">
+    <div class="container">
+
+      <header class="brand">
+        <img class="logo" src="./logo.png" alt="DNPharm Logo">
+        <div class="title">DNPharm</div>
+        <div class="tagline">HEALTH DELIVERED</div>
+      </header>
+
+      <!-- ЗА НАС -->
+      <section class="card" id="about">
+        <div class="card-header">
+          <h2>За нас</h2>
+          <div class="card-actions">
+            <a href="#about" class="chip chip-active">За нас</a>
+            <a href="index2.html" class="chip">Повече</a>
+          </div>
+        </div>
+
+        <p>
+          DNPharm е дружество с ограничена отговорност, регистрирано в Нидерландия,
+          създадено от второ поколение български фармацевти и фармацевтични техници.
+        </p>
+        <p>
+          Дружеството предлага търговия на едро и дребно с лекарствени продукти,
+          организиране на медицински прегледи, както и преводачески услуги в сферата на
+          медицината, насочени към хора в Нидерландия без здравна осигуровка.
+        </p>
+      </section>
+
+      <!-- МИСИЯ -->
+      <section class="card" style="background: var(--glass2);">
+        <h2>Нашата мисия</h2>
+        <p>
+          Нашата мисия е да улесним достъпа до здравеопазване и да го направим по-достъпно
+          за хора, които нямат финансовата възможност да покриват високите разходи за
+          болнично лечение, лекарски прегледи и медицински услуги в Нидерландия.
+        </p>
+        <p>
+          Работим единствено с лицензирани доставчици и фармацевтични складове,
+          гарантирайки качество и сигурност на предлаганите продукти и услуги.
+        </p>
+      </section>
+
+      <footer>© 2026 DNPharm. Всички права запазени.</footer>
+    </div>
+  </div>
+</body>
+</html>
